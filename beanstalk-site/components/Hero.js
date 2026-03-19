@@ -1,225 +1,135 @@
+import Image from 'next/image'
 import { siteConfig } from '../data/config'
 
 export default function Hero() {
-  const { event, clientName, clientNote, pricing } = siteConfig
+  const { event, clientName, pricing } = siteConfig
 
   return (
     <section style={{
-      position: 'relative',
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'flex-end',
-      paddingBottom: '80px',
-      overflow: 'hidden',
-      background: 'var(--ink)',
+      position: 'relative', minHeight: '100vh',
+      display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
+      paddingBottom: '80px', overflow: 'hidden',
+      background: 'linear-gradient(160deg, var(--green-darkest) 0%, #1a2e28 100%)',
     }}>
-      {/* Background grid lines */}
+      {/* Organic background pattern */}
       <div style={{
-        position: 'absolute',
-        inset: 0,
-        backgroundImage: `
-          linear-gradient(rgba(200,169,110,0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(200,169,110,0.04) 1px, transparent 1px)
-        `,
-        backgroundSize: '80px 80px',
-        pointerEvents: 'none',
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        backgroundImage: `radial-gradient(ellipse 60% 50% at 80% 20%, rgba(205,247,101,0.07) 0%, transparent 70%),
+                          radial-gradient(ellipse 40% 60% at 10% 80%, rgba(49,92,82,0.6) 0%, transparent 60%)`,
       }} />
 
-      {/* Glow */}
+      {/* Subtle grid */}
       <div style={{
-        position: 'absolute',
-        top: '20%',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '600px',
-        height: '600px',
-        background: 'radial-gradient(circle, rgba(200,169,110,0.08) 0%, transparent 70%)',
-        pointerEvents: 'none',
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        backgroundImage: `linear-gradient(rgba(205,247,101,0.04) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(205,247,101,0.04) 1px, transparent 1px)`,
+        backgroundSize: '72px 72px',
       }} />
 
-      {/* Vertical label */}
+      {/* Event date pill — top right */}
       <div style={{
-        position: 'absolute',
-        top: '50%',
-        right: '32px',
-        transform: 'translateY(-50%) rotate(90deg)',
-        transformOrigin: 'center',
-        fontFamily: 'DM Mono, monospace',
-        fontSize: '10px',
-        letterSpacing: '0.2em',
-        color: 'var(--stone)',
-        whiteSpace: 'nowrap',
+        position: 'absolute', top: '90px', right: '32px',
+        fontFamily: 'Afacad, sans-serif', fontSize: '12px', fontWeight: 600,
+        letterSpacing: '0.14em', textTransform: 'uppercase',
+        color: 'var(--green-lime)',
+        background: 'rgba(205,247,101,0.1)',
+        border: '1px solid rgba(205,247,101,0.2)',
+        borderRadius: '100px', padding: '8px 18px',
       }}>
-        SEPT 14–16 · INDUSTRY CITY · BROOKLYN
+        Sept 14–16, 2026 · Brooklyn, NY
       </div>
 
       <div className="container">
-        {/* Client personalization */}
+        {/* Client badge */}
         {clientName && (
           <div className="animate-fade-up" style={{
-            fontFamily: 'DM Mono, monospace',
-            fontSize: '11px',
-            letterSpacing: '0.2em',
-            color: 'var(--gold)',
-            textTransform: 'uppercase',
-            marginBottom: '24px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
+            display: 'inline-flex', alignItems: 'center', gap: '10px',
+            fontFamily: 'Afacad, sans-serif', fontSize: '13px', fontWeight: 600,
+            letterSpacing: '0.1em', textTransform: 'uppercase',
+            color: 'var(--black)', background: 'var(--green-lime)',
+            borderRadius: '100px', padding: '6px 16px', marginBottom: '28px',
           }}>
-            <span style={{ width: '32px', height: '1px', background: 'var(--gold)', display: 'inline-block' }} />
-            Prepared exclusively for {clientName}
+            <span>🌱</span> Prepared for {clientName}
           </div>
         )}
 
-        {/* Eyebrow */}
         {!clientName && (
-          <div className="animate-fade-up" style={{
-            fontFamily: 'DM Mono, monospace',
-            fontSize: '11px',
-            letterSpacing: '0.2em',
-            color: 'var(--stone-light)',
-            textTransform: 'uppercase',
-            marginBottom: '24px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-          }}>
-            <span style={{ width: '32px', height: '1px', background: 'var(--gold)', display: 'inline-block' }} />
-            Partnership Overview · {siteConfig.year}
+          <div className="animate-fade-up" style={{ marginBottom: '28px' }}>
+            <span style={{
+              fontFamily: 'Afacad, sans-serif', fontSize: '13px', fontWeight: 600,
+              letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--green-lime)',
+            }}>Partnership Overview · 2026</span>
           </div>
         )}
 
-        {/* Title */}
+        {/* Hero headline */}
         <h1 className="animate-fade-up delay-1" style={{
-          fontFamily: 'Cormorant Garamond, serif',
-          fontSize: 'clamp(56px, 9vw, 128px)',
-          fontWeight: 300,
-          lineHeight: 0.9,
-          letterSpacing: '-0.02em',
-          color: 'var(--parchment)',
-          marginBottom: '8px',
+          fontFamily: 'NewSpirit, serif', fontWeight: 700,
+          fontSize: 'clamp(52px, 9vw, 120px)',
+          lineHeight: 0.92, letterSpacing: '-0.02em',
+          color: 'var(--off-white)',
+          marginBottom: '32px',
         }}>
-          Bean
-          <span style={{ color: 'var(--gold)', fontStyle: 'italic' }}>stalk</span>
+          Grow your<br />
+          <span style={{ color: 'var(--green-lime)' }}>network.</span>
         </h1>
-        <h2 className="animate-fade-up delay-2" style={{
-          fontFamily: 'Cormorant Garamond, serif',
-          fontSize: 'clamp(16px, 3vw, 28px)',
-          fontWeight: 300,
-          color: 'var(--stone-light)',
-          letterSpacing: '0.12em',
-          textTransform: 'uppercase',
-          marginBottom: '48px',
-        }}>
-          {event.dates}
-        </h2>
 
-        {/* Stats bar */}
+        <p className="animate-fade-up delay-2" style={{
+          fontFamily: 'Afacad, sans-serif', fontSize: '18px', fontWeight: 400,
+          color: 'var(--mint)', lineHeight: 1.65,
+          maxWidth: '560px', marginBottom: '48px',
+        }}>
+          {event.description}
+        </p>
+
+        {/* Stats row */}
         <div className="animate-fade-up delay-3" style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '0',
-          borderTop: '1px solid rgba(200,169,110,0.2)',
-          borderBottom: '1px solid rgba(200,169,110,0.2)',
-          marginBottom: '56px',
+          display: 'flex', flexWrap: 'wrap', gap: '0',
+          borderTop: '1px solid rgba(205,247,101,0.15)',
+          marginBottom: '52px', maxWidth: '720px',
         }}>
           {[
             { value: '90%+', label: 'VP & Above' },
-            { value: '2×', label: 'Senior Ratio vs Competitors' },
-            { value: '100%', label: 'Invite Only' },
-            { value: '3', label: 'Days, Brooklyn NY' },
-          ].map((stat, i) => (
+            { value: '2×', label: 'Senior ratio vs peers' },
+            { value: 'Invite', label: 'Only event' },
+            { value: '3', label: 'Days in Brooklyn' },
+          ].map((s, i) => (
             <div key={i} style={{
-              flex: '1 1 160px',
-              padding: '24px 28px',
-              borderRight: i < 3 ? '1px solid rgba(200,169,110,0.15)' : 'none',
+              flex: '1 1 140px', padding: '20px 24px',
+              borderRight: i < 3 ? '1px solid rgba(205,247,101,0.1)' : 'none',
+              borderBottom: '1px solid rgba(205,247,101,0.15)',
             }}>
               <div style={{
-                fontFamily: 'Cormorant Garamond, serif',
-                fontSize: '36px',
-                fontWeight: 400,
-                color: 'var(--gold)',
-                lineHeight: 1,
-                marginBottom: '4px',
-              }}>{stat.value}</div>
+                fontFamily: 'NewSpirit, serif', fontWeight: 700,
+                fontSize: '32px', color: 'var(--green-lime)', lineHeight: 1, marginBottom: '4px',
+              }}>{s.value}</div>
               <div style={{
-                fontFamily: 'DM Sans, sans-serif',
-                fontSize: '12px',
-                color: 'var(--stone-light)',
-                letterSpacing: '0.06em',
-              }}>{stat.label}</div>
+                fontFamily: 'Afacad, sans-serif', fontSize: '13px', color: 'var(--text-faint)',
+              }}>{s.label}</div>
             </div>
           ))}
         </div>
 
-        {/* Description */}
-        <div className="animate-fade-up delay-4" style={{
-          display: 'flex',
-          gap: '48px',
-          flexWrap: 'wrap',
-          alignItems: 'flex-start',
-        }}>
-          <p style={{
-            fontFamily: 'DM Sans, sans-serif',
-            fontSize: '16px',
-            fontWeight: 300,
-            color: 'var(--stone-light)',
-            lineHeight: 1.7,
-            maxWidth: '520px',
-            flex: '1 1 300px',
-          }}>
-            {event.description}
-          </p>
-          <div style={{ flex: '0 0 auto' }}>
-            <a href="#packages" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '12px',
-              fontFamily: 'DM Sans, sans-serif',
-              fontSize: '13px',
-              fontWeight: 500,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: 'var(--gold)',
-              textDecoration: 'none',
-              border: '1px solid rgba(200,169,110,0.4)',
-              padding: '14px 28px',
-              transition: 'background 0.25s, color 0.25s',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.background = 'var(--gold)'
-              e.currentTarget.style.color = 'var(--ink)'
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.background = 'transparent'
-              e.currentTarget.style.color = 'var(--gold)'
-            }}
-            >
-              View Packages
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-          </div>
+        {/* CTAs */}
+        <div className="animate-fade-up delay-4" style={{ display: 'flex', flexWrap: 'wrap', gap: '14px' }}>
+          <a href="#packages" className="btn-primary">
+            View Packages
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+          <a href="#contact" className="btn-outline">Get in Touch</a>
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll cue */}
       <div style={{
-        position: 'absolute',
-        bottom: '32px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '8px',
-        opacity: 0.4,
+        position: 'absolute', bottom: '32px', left: '50%', transform: 'translateX(-50%)',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', opacity: 0.35,
       }}>
-        <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '9px', letterSpacing: '0.2em', color: 'var(--stone)' }}>SCROLL</span>
-        <div style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, var(--gold), transparent)' }} />
+        <div style={{ width: '1px', height: '48px', background: 'linear-gradient(to bottom, var(--green-lime), transparent)' }} />
+        <span style={{ fontFamily: 'Afacad, sans-serif', fontSize: '10px', letterSpacing: '0.18em',
+          textTransform: 'uppercase', color: 'var(--mint)' }}>Scroll</span>
       </div>
     </section>
   )

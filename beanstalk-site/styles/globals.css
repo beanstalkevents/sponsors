@@ -1,157 +1,161 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ── Brand Fonts ────────────────────────────────────── */
+@font-face {
+  font-family: 'NewSpirit';
+  src: url('/fonts/NewSpirit-Regular.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'NewSpirit';
+  src: url('/fonts/NewSpirit-Medium.otf') format('opentype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'NewSpirit';
+  src: url('/fonts/NewSpirit-SemiBold.otf') format('opentype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'NewSpirit';
+  src: url('/fonts/NewSpirit-Bold.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/fonts/Afacad-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/fonts/Afacad-Medium.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/fonts/Afacad-SemiBold.ttf') format('truetype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/fonts/Afacad-Bold.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
 :root {
-  --gold: #C8A96E;
-  --gold-light: #E2C99A;
-  --gold-dark: #8A6A3A;
-  --ink: #0E0C0A;
-  --ink-soft: #1C1A16;
-  --parchment: #F5F0E8;
-  --parchment-dark: #EAE2D4;
-  --bark: #2A2118;
-  --stone: #6B6458;
-  --stone-light: #A09880;
-  --off-white: #FAF8F4;
+  --green-darkest: #233c36;
+  --green-dark:    #2b4a44;
+  --green-mid:     #315c52;
+  --green-lime:    #cdf765;
+  --black:         #141414;
+  --off-white:     #fcf9ec;
+  --cream:         #dfd5bc;
+  --mint:          #c7dccd;
+  --tan:           #ba9e6e;
+  --bg:            var(--green-darkest);
+  --bg-card:       var(--green-dark);
+  --bg-raised:     var(--green-mid);
+  --text-primary:  var(--off-white);
+  --text-muted:    var(--mint);
+  --text-faint:    rgba(199,220,205,0.55);
+  --accent:        var(--green-lime);
+  --accent-warm:   var(--tan);
+  --border:        rgba(205,247,101,0.15);
+  --border-warm:   rgba(186,158,110,0.25);
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--ink);
-  color: var(--parchment);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  line-height: 1.65;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Afacad', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Typography ─────────────────────────────────────── */
-
-.font-display {
-  font-family: 'Cormorant Garamond', serif;
+h1, h2, h3, h4, h5 {
+  font-family: 'NewSpirit', serif;
+  font-weight: 700;
+  line-height: 1.05;
 }
 
-.font-mono {
-  font-family: 'DM Mono', monospace;
+.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.section { padding: 96px 0; }
+
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .section { padding: 64px 0; }
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  line-height: 1.1;
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.card:hover {
+  border-color: rgba(205,247,101,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
 
-/* ── Gold Rule ──────────────────────────────────────── */
-.gold-rule {
-  width: 48px;
-  height: 1px;
-  background: var(--gold);
-  display: block;
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Afacad', sans-serif; font-size: 15px; font-weight: 600;
+  letter-spacing: 0.04em; color: var(--black); background: var(--green-lime);
+  border: none; border-radius: 6px; padding: 14px 32px;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: #d9ff7a; transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Afacad', sans-serif; font-size: 15px; font-weight: 600;
+  letter-spacing: 0.04em; color: var(--green-lime); background: transparent;
+  border: 1.5px solid var(--green-lime); border-radius: 6px; padding: 13px 32px;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+.btn-outline:hover { background: var(--green-lime); color: var(--black); transform: translateY(-1px); }
+
+.section-label {
+  display: flex; align-items: center; gap: 14px;
+  font-family: 'Afacad', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--green-lime); margin-bottom: 48px;
+}
+.section-label::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(205,247,101,0.3), transparent);
 }
 
-.gold-rule-full {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, var(--gold), transparent);
-}
-
-/* ── Noise Overlay ──────────────────────────────────── */
-.noise::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  opacity: 0.06;
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-/* ── Animations ─────────────────────────────────────── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
+.animate-fade-up { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) both; }
+.animate-fade-in { animation: fadeIn 0.5s ease both; }
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.18s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.44s; }
+.delay-5 { animation-delay: 0.58s; }
 
-.animate-fade-up {
-  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
+.divider { width: 100%; height: 1px; background: var(--border); }
+.divider-warm { width: 48px; height: 2px; background: var(--tan); border-radius: 2px; }
 
-.animate-fade-in {
-  animation: fadeIn 0.6s ease both;
-}
-
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.35s; }
-.delay-4 { animation-delay: 0.5s; }
-.delay-5 { animation-delay: 0.65s; }
-
-/* ── Gold shimmer text ───────────────────────────────── */
-.gold-shimmer {
-  background: linear-gradient(
-    90deg,
-    var(--gold) 0%,
-    var(--gold-light) 40%,
-    var(--gold) 60%,
-    var(--gold-dark) 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ── Card base ───────────────────────────────────────── */
-.card {
-  background: var(--ink-soft);
-  border: 1px solid rgba(200, 169, 110, 0.15);
-  border-radius: 2px;
-  transition: border-color 0.3s ease, transform 0.3s ease;
-}
-
-.card:hover {
-  border-color: rgba(200, 169, 110, 0.4);
-}
-
-/* ── Section padding ─────────────────────────────────── */
-.section {
-  padding: 100px 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
-
-@media (max-width: 768px) {
-  .section { padding: 64px 0; }
-  .container { padding: 0 20px; }
-}
-
-/* ── Scrollbar ────────────────────────────────────────── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--ink); }
-::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--green-mid); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green-lime); }

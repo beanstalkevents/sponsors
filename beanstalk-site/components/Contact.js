@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { siteConfig } from '../data/config'
 
 export default function Contact() {
@@ -6,147 +7,69 @@ export default function Contact() {
   return (
     <>
       <section id="contact" className="section" style={{
-        background: 'var(--ink)',
-        position: 'relative',
-        overflow: 'hidden',
+        background: 'linear-gradient(160deg, var(--green-darkest) 0%, #1a2e28 100%)',
+        position: 'relative', overflow: 'hidden',
       }}>
-        {/* Large watermark text */}
+        {/* Big background text */}
         <div style={{
-          position: 'absolute',
-          bottom: '-20px',
-          right: '-20px',
-          fontFamily: 'Cormorant Garamond, serif',
-          fontSize: 'clamp(120px, 20vw, 240px)',
-          fontWeight: 300,
-          color: 'rgba(200,169,110,0.04)',
-          lineHeight: 1,
-          pointerEvents: 'none',
-          userSelect: 'none',
-          letterSpacing: '-0.05em',
-        }}>
-          2026
-        </div>
+          position: 'absolute', bottom: '-40px', right: '-10px',
+          fontFamily: 'NewSpirit, serif', fontWeight: 700,
+          fontSize: 'clamp(100px, 18vw, 220px)',
+          color: 'rgba(205,247,101,0.04)',
+          lineHeight: 1, pointerEvents: 'none', userSelect: 'none',
+        }}>2026</div>
 
         <div className="container" style={{ position: 'relative' }}>
-          <div style={{ maxWidth: '600px' }}>
+          <div className="section-label">04 — Get in Touch</div>
 
-            <div style={{
-              fontFamily: 'DM Mono, monospace',
-              fontSize: '10px',
-              letterSpacing: '0.25em',
-              color: 'var(--gold)',
-              textTransform: 'uppercase',
-              marginBottom: '24px',
-            }}>04 — Get in Touch</div>
-
+          <div style={{ maxWidth: '640px' }}>
             <h2 style={{
-              fontFamily: 'Cormorant Garamond, serif',
-              fontSize: 'clamp(40px, 6vw, 72px)',
-              fontWeight: 300,
-              color: 'var(--parchment)',
-              lineHeight: 1.05,
-              marginBottom: '32px',
-            }}>
-              {cta.headline}
-            </h2>
+              fontFamily: 'NewSpirit, serif', fontWeight: 700,
+              fontSize: 'clamp(38px, 6vw, 68px)',
+              color: 'var(--off-white)', lineHeight: 1.0, marginBottom: '24px',
+            }}>{cta.headline}</h2>
 
-            <span className="gold-rule" style={{ marginBottom: '32px', display: 'block' }} />
+            <div className="divider-warm" style={{ marginBottom: '24px' }} />
 
             <p style={{
-              fontFamily: 'DM Sans, sans-serif',
-              fontSize: '16px',
-              color: 'var(--stone-light)',
-              lineHeight: 1.75,
-              marginBottom: '48px',
-            }}>
-              {cta.body}
-            </p>
+              fontFamily: 'Afacad, sans-serif', fontSize: '17px',
+              color: 'var(--mint)', lineHeight: 1.7, marginBottom: '40px',
+            }}>{cta.body}</p>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}>
-              <a
-                href={`mailto:${cta.email}`}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontSize: '13px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'var(--ink)',
-                  background: 'var(--gold)',
-                  textDecoration: 'none',
-                  padding: '16px 36px',
-                  transition: 'opacity 0.2s',
-                }}
-                onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-              >
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center' }}>
+              <a href={`mailto:${cta.email}`} className="btn-primary">
                 {cta.buttonLabel}
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </a>
-
               <a href={`mailto:${cta.email}`} style={{
-                fontFamily: 'DM Mono, monospace',
-                fontSize: '13px',
-                color: 'var(--stone-light)',
-                textDecoration: 'none',
-                letterSpacing: '0.04em',
-                transition: 'color 0.2s',
+                fontFamily: 'Afacad, sans-serif', fontSize: '15px', fontWeight: 500,
+                color: 'var(--mint)', textDecoration: 'none', transition: 'color 0.2s',
               }}
-              onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
-              onMouseLeave={e => e.currentTarget.style.color = 'var(--stone-light)'}
-              >
-                {cta.email}
-              </a>
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--green-lime)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--mint)'}
+              >{cta.email}</a>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer style={{
-        background: 'var(--bark)',
-        padding: '40px 0',
-        borderTop: '1px solid rgba(200,169,110,0.1)',
+        background: 'var(--black)',
+        borderTop: '1px solid rgba(205,247,101,0.1)',
+        padding: '36px 0',
       }}>
         <div className="container" style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '16px',
+          display: 'flex', justifyContent: 'space-between',
+          alignItems: 'center', flexWrap: 'wrap', gap: '16px',
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{
-              fontFamily: 'Cormorant Garamond, serif',
-              fontSize: '18px',
-              color: 'var(--gold)',
-              letterSpacing: '0.08em',
-            }}>BEANSTALK</span>
-            <span style={{
-              fontFamily: 'DM Mono, monospace',
-              fontSize: '10px',
-              color: 'var(--stone)',
-              letterSpacing: '0.15em',
-            }}>EVENTS · {siteConfig.year}</span>
-          </div>
-          <div style={{
-            fontFamily: 'DM Sans, sans-serif',
-            fontSize: '12px',
-            color: 'var(--stone)',
-          }}>
+          <Image src="/logos/logo-lime.png" alt="Beanstalk" width={120} height={36}
+            style={{ objectFit: 'contain', height: '28px', width: 'auto' }} />
+          <div style={{ fontFamily: 'Afacad, sans-serif', fontSize: '13px', color: 'rgba(199,220,205,0.45)' }}>
             {event.location} · {event.dates}
           </div>
-          <div style={{
-            fontFamily: 'DM Mono, monospace',
-            fontSize: '11px',
-            color: 'var(--stone)',
-          }}>
+          <div style={{ fontFamily: 'Afacad, sans-serif', fontSize: '13px', color: 'rgba(199,220,205,0.35)' }}>
             © {siteConfig.year} Beanstalk Events
           </div>
         </div>
